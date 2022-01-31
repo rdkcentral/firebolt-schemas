@@ -1,0 +1,293 @@
+{
+  "$schema": "https://meta.comcast.com/firebolt/app_manifest",
+  "$id": "https://meta.comcast.com/firebolt/app_manifest",
+  "title": "AppManifest",
+  "anyOf": [
+    {
+      "$ref": "#/definitions/AppManifest"
+    }
+  ],
+  "definitions": {
+    "AppManifest": {
+      "title": "AppManifest",
+      "description": "A manifest object that provides all configuration for an application to run on FireboltOS",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "appId",
+        "name",
+        "shortName",
+        "origin",
+        "minFireboltInterfaceVersion",
+        "appSoftwareVersion",
+        "loadMode",
+        "types",
+        "usedPlatformCapabilities",
+        "grantedPlatformCapabilities"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "description": "The version of the manifest schema that this manfiest conforms to"
+        },
+        "appId": {
+          "type": "string",
+          "description": "The id for the app"
+        },
+        "name": {
+          "$ref": "https://meta.comcast.com/firebolt/primitives#/definitions/LocalizedString",
+          "description": "The full display name of the app"
+        },
+        "shortName": {
+          "$ref": "https://meta.comcast.com/firebolt/primitives#/definitions/LocalizedString",
+          "description": "The short display name of the app"
+        },
+        "origin": {
+          "type": "string",
+          "description": "The origin of the App Bundle (including Manifest). This allows the OS confirm that the Manifest has not been borrowed by an imposter. Note that this includes schema and port"
+        },
+        "startPage": {
+          "type": "string",
+          "description": "The URL to the app’s HTML start page. May be relative to a file within the FWA Bundle or an absolute uri"
+        },
+        "minFireboltInterfaceVersion": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 14,
+          "pattern": "^(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)$",
+          "description": "The SemVer that represents the versioned interface that this application is coded against and requires to run"
+        },
+        "appReleaseKey": {
+          "type": "string",
+          "description": "The version that is given to the application when it is released by a distributor"
+        },
+        "appSoftwareVersion": {
+          "type": "string",
+          "description": "The version of the app given by the publisher"
+        },
+        "releaseStatus": {
+          "type": "string",
+          "enum": [
+            "development",
+            "self",
+            "distributor" 
+          ],
+          "description": "The status of releasing the application"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the application was released"
+        },
+        "loadMode": {
+          "type": "string",
+          "description": "How the OS should load the application.",
+          "enum": [
+            "web",
+            "legacy",
+            "cobalt",
+            "native" 
+          ]
+        },
+        "legacyLoadConfig": {
+          "$ref": "#/definitions/LegacyLoadConfig",
+          "description": "The date the application was released"
+        },
+        "publisher": {
+          "$ref": "#/definitions/Publisher",
+          "description": "Information about who published this application"
+        },
+        "appFamily": {
+          "type": "string",
+          "description": "A tag that app partners can apply to group together a set of their apps."
+        },
+        "language": {
+          "type": "string",
+          "description": "The default language of this app, if the OS does not expose a locale."
+        },
+        "allowedLocationCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of locations that are allowed to run the application. Must be prefixed by country"
+        },
+        "dialAppNames": {
+          "type": "string",
+          "description": "The DIAL application names that will result in this application being launched. MUST be unique within the catalog. http://www.dial-multiscreen.org/dial-registry"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "entertainment",
+              "game",
+              "productivity",
+              "lifestyle"
+            ]
+          },
+          "description": "The types of the app"
+        },
+        "distributorDefault": {
+          "type": "boolean",
+          "description": "Whether this is the default app of the particular type for this partner.  The OS must not launch multiple defaults for a particular type.  Further the S&D API should not allow discovery multiple defaults of the same type."
+        },
+        "endUserDiscoverable": {
+          "type": "boolean",
+          "description": "Whether this app is included in programmatic end user discovery experiences."
+        },
+        "enableCloudMetadataInCatalog": {
+          "type": "boolean",
+          "description": "Whether the app has cloud metadata available and it should be shown when the app is present in a device’s App Catalog. Aggregated Experience can query this value to know to request cloud metadata for this app."
+        },
+        "enableCloudMetadataInLibrary": {
+          "type": "boolean",
+          "description": "Whether the app has cloud metadata available and it should be shown when the app is present in a device’s App Library. Aggregated Experience can query this value to know to request cloud metadata for this app."
+        },
+        "cloudMetadataCatalog": {
+          "type": "boolean",
+          "description": "Catalog name for accessing cloud metadata for the app. In XVP scenario, this is the supportCatalogType value to send to ARS."
+        },
+        "fallbackApp": {
+          "$ref": "#/definitions/FallbackApp",
+          "description": "If the app fails to launch for a supported reason, launch the specified app with the specified intent instead"
+        },
+        "preferredDimensions": {
+          "$ref": "https://meta.comcast.com/firebolt/primitives#/definitions/Dimension",
+          "description": "The static dimensions that the app was coded to. FireboltOS will scale the app to fit the screen. If this value is not given, the app is assumed to dynamically adjust itself to any dimension."
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "https://meta.comcast.com/firebolt/image#/definitions/Image"
+          },
+          "description": "The images associated with this app"
+        },
+        "allowedDeviceSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If specified, the app may only execute the defined device skus"
+        },
+        "excludedDeviceSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If specified, the app may not only execute on the defined device skus"
+        },
+        "usedPlatformCapabilities": {
+          "$ref": "#/definitions/PlatformCapabilities",
+          "description": "The capabilities that the app uses from the platform"
+        },
+        "grantedPlatformCapabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The capabilities granted by the distributor"
+        }
+      }
+    },
+    "LegacyLoadConfig": {
+      "title": "LegacyLoadConfig",
+      "description": "Configuration to run a legacy application on FireboltOS",
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "x1",
+            "sky"
+          ],
+          "description": "The mode used to load the legacy configuration"
+        },
+        "config": {
+          "type": "object",
+          "description": "The specific configuration data needed for the legacy mode to run the app."
+        }
+      },
+      "required": [
+        "mode",
+        "config"
+      ]
+    },
+    "Publisher": {
+      "title": "Publisher",
+      "description": "Information about who published this application",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the Publisher"
+        },
+        "contactName": {
+          "type": "string",
+          "description": "A name of an individual used when contacting someone about the application"
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "An email of an individual used when contacting someone about the application"
+        }
+      },
+      "required": [
+        "id",
+        "contactName",
+        "contactEmail"
+      ]
+    },
+    "FallbackApp": {
+      "title": "FallbackApp",
+      "description": "The application to fallback when launching an application fails",
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "description": "The id of application to launch"
+        },
+        "intent": {
+          "$ref": "https://meta.comcast.com/firebolt/intents#/definitions/NavigationIntent",
+          "description": "The intent to pass to the fallback application"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "DeviceSkuNotSupported",
+            "AuthorizationFailed "
+          ],
+          "description": "The app failure reason that triggers this fallback app launch."
+        }
+      },
+      "required": [
+        "id",
+        "contactName",
+        "contactEmail"
+      ]
+    },
+    "PlatformCapabilities": {
+      "title": "PlatformCapabilities",
+      "description": "Separates capabilities into musts and shoulds",
+      "type": "object",
+      "properties": {
+        "must": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "should": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ]
+    }
+  }
+}
