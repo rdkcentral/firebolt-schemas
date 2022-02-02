@@ -378,6 +378,9 @@
                 },
                 {
                   "$ref": "#/definitions/AdditionalEntity"
+                },
+                {
+                  "$ref": "#/definitions/UntypedEntity"
                 }
               ]
             }
@@ -618,7 +621,6 @@
           "type": "object",
           "required": [
             "entityType",
-            "programType",
             "entityId"
           ],
           "properties": {
@@ -657,6 +659,36 @@
           "entityType": "program",
           "programType": "concert",
           "entityId": "live-aid"
+        }
+      ]
+    },
+    "UntypedEntity": {
+      "title": "UntypedEntity",
+      "allOf": [
+        {
+          "description": "A Firebolt compliant representation of the remaining entity types.",
+          "type": "object",
+          "required": [
+            "entityId"
+          ],
+          "properties": {
+            "entityId": {
+              "$ref": "#/definitions/Identifier"
+            },
+            "assetId": {
+              "$ref": "#/definitions/Identifier"
+            },
+            "appContentData": {
+              "type": "string",
+              "maxLength": 256
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "examples": [
+        {
+          "entityId": "an-entity"
         }
       ]
     },
@@ -825,6 +857,22 @@
                 "query": {
                   "type": "string"
                 },
+                "filters": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Filter"
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "keywords": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Keyword"
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
                 "menus": {
                   "type": "array",
                   "items": {
@@ -849,6 +897,45 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "examples": [
+        {
+          "action": "discovery",
+          "context": {
+            "source": "voice"
+          },
+          "data": {
+            "query": "Bill Murray Comedies in 4K",
+            "filters": [
+              {
+                "key": "videoResolution",
+                "value": "UHD"
+              }
+            ],
+            "keywords": [
+              {
+                "keyword": "Bill Murray",
+                "type": "Person",
+                "appId": "FooApp"
+              },
+              {
+                "keyword": "Comedies",
+                "type": "Genre",
+                "appId": "FooApp"
+              }
+            ],
+            "menus": [
+              "abcdef",
+              "ghijkl"
+            ],
+            "federation": [
+              {
+                "appId": "BarApp",
+                "exclude": false
+              }
+            ]
           }
         }
       ]
@@ -1724,6 +1811,31 @@
     },
     "Identifier": {
       "type": "string"
+    },
+    "Filter": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Keyword": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "appId": {
+          "$ref": "#/definitions/Identifier"
+        }
+      }
     },
     "DirectionalOperation": {
       "type": "object",
