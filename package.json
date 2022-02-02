@@ -2,6 +2,9 @@
   "name": "@firebolt-js/schemas",
   "version": "0.1.0-alpha.1",
   "description": "Firebolt schemas for configuration and global types",
+  "files": [
+    "src/schemas/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rdkcentral/firebolt-schemas.git"
