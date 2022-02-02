@@ -1,5 +1,5 @@
 {
-  "name": "firebolt-schemas",
+  "name": "@firebolt-js/schemas",
   "version": "0.1.0-alpha.1",
   "description": "Firebolt schemas for configuration and global types",
   "repository": {
