@@ -1,0 +1,23 @@
+{
+  "name": "@firebolt-js/schemas",
+  "version": "0.1.0-alpha.1",
+  "description": "Firebolt schemas for configuration and global types",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdkcentral/firebolt-schemas.git"
+  },
+  "scripts": {
+    "validate": "node src/scripts/validate.js"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rdkcentral/firebolt-schemas/issues"
+  },
+  "homepage": "https://github.com/rdkcentral/firebolt-schemas#readme",
+  "dependencies": {
+    "ajv": "^8.9.0",
+    "ajv-formats": "^2.1.1",
+    "standard": "^16.0.4"
+  }
+}
