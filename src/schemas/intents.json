@@ -97,7 +97,7 @@
                   "$ref": "#/definitions/DiscoveryIntent"
                 },
                 {
-                  "$ref": "#/definitions/PlaybackIntent"
+                  "$ref": "#/definitions/PlaybackControlIntent"
                 },
                 {
                   "$ref": "#/definitions/DeviceIntent"
@@ -212,7 +212,7 @@
           "$ref": "#/definitions/EntityIntent"
         },
         {
-          "$ref": "#/definitions/PlayerIntent"
+          "$ref": "#/definitions/PlaybackIntent"
         },
         {
           "$ref": "#/definitions/SearchIntent"
@@ -253,7 +253,7 @@
         }
       ]
     },
-    "PlaybackIntent": {
+    "PlaybackControlIntent": {
       "description": "A Firebolt compliant representation of a user intention to control some aspect of in-progress playback.",
       "anyOf": [
         {
@@ -692,9 +692,9 @@
         }
       ]
     },
-    "PlayerIntent": {
+    "PlaybackIntent": {
       "description": "A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.",
-      "title": "PlayerIntent",
+      "title": "PlaybackIntent",
       "allOf": [
         {
           "$ref": "#/definitions/Intent"
