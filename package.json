@@ -10,7 +10,8 @@
     "url": "git+https://github.com/rdkcentral/firebolt-schemas.git"
   },
   "scripts": {
-    "validate": "node src/scripts/validate.js"
+    "validate": "node src/scripts/validate.js",
+    "generate": "node src/scripts/generate.js"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -22,5 +23,8 @@
     "ajv": "^8.9.0",
     "ajv-formats": "^2.1.1",
     "standard": "^16.0.4"
+  },
+  "devDependencies": {
+    "@firebolt-js/sdk": "../firebolt-core-sdk"
   }
 }
