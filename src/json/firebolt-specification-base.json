@@ -3,7 +3,8 @@
     "capabilities": [
         {
             "id": "xrn:distribution:capability:monetization:advertising",
-            "level": "extension",
+            "level": "must",
+            "isExtension": true,
             "use": {
                 "public": true,
                 "negotiable": true
@@ -864,6 +865,15 @@
                 "public": false,
                 "negotiable": false
             }
+        }
+    ],
+    "apis": [
+        {
+            "type": "w3c",
+            "method": "MediaDevice.getUserMedia",
+            "uses": [
+                "xrn:firebolt:capability:media:capture"
+            ]
         }
     ]
 }
