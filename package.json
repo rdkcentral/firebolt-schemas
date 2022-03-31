@@ -11,7 +11,7 @@
   },
   "scripts": {
     "validate": "node src/scripts/validate.js",
-    "generate": "node src/scripts/generate.js"
+    "generate": "firebolt-openrpc --task specification -b src/json/firebolt-specification-base.json --sdk core --sdk discovery --sdk manage -o build/firebolt.json"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -25,6 +25,10 @@
     "standard": "^16.0.4"
   },
   "devDependencies": {
-    "@firebolt-js/sdk": "../firebolt-core-sdk"
+    "@firebolt-js/openrpc": "../firebolt-openrpc",
+    "@firebolt-js/sdk": "../firebolt-core-sdk",
+    "@firebolt-js/manage": "../firebolt-manage-sdk",
+    "@firebolt-js/discovery": "../firebolt-discovery-sdk",
+    "nopt": "^5.0.0"
   }
 }
