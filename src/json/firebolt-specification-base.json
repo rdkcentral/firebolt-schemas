@@ -1,4 +1,6 @@
 {
+    "title": "Firebolt Specification",
+    "$schema": "https://meta.comcast.com/firebolt",
     "version": "1.0",
     "capabilities": [
         {

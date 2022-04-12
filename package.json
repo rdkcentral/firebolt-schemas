@@ -10,7 +10,7 @@
     "url": "git+https://github.com/rdkcentral/firebolt-schemas.git"
   },
   "scripts": {
-    "validate": "node src/scripts/validate.js",
+    "validate": "firebolt-openrpc --task validate --source src && npm run generate && firebolt-openrpc --task validate --source build/firebolt-specification.json --shared-schemas src/schemas/specifications",
     "generate": "firebolt-openrpc --task specification -b src/json/firebolt-specification-base.json --sdk core --sdk discovery --sdk manage -o build/firebolt-specification.json"
   },
   "author": "",
