@@ -58,28 +58,24 @@
         },
         "BooleanMap": {
             "type": "object",
-            "patternProperties": {
-                "^.*$": {
-                    "type": "boolean"
-                }
+            "additionalProperties": {
+                "type": "boolean"
             }
         },
         "FlatMap": {
             "type": "object",
-            "patternProperties": {
-                "^.*$": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "boolean"
-                        }
-                    ]
-                }
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "boolean"
+                    }
+                ]
             }
         },
         "LocalizedString": {
@@ -91,10 +87,8 @@
                 },
                 {
                     "type": "object",
-                    "patternProperties": {
-                        ".*": {
-                            "type": "string"
-                        }
+                    "additionalProperties": {
+                        "type": "string"
                     }
                 }
             ],
