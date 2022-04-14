@@ -1,0 +1,34 @@
+{
+  "name": "@firebolt-js/schemas",
+  "version": "0.2.0-alpha.1",
+  "description": "Firebolt schemas for configuration and global types",
+  "files": [
+    "src/schemas/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdkcentral/firebolt-schemas.git"
+  },
+  "scripts": {
+    "validate": "firebolt-openrpc --task validate --source src && npm run generate && firebolt-openrpc --task validate --source build/firebolt-specification.json --shared-schemas src/schemas/specifications",
+    "generate": "firebolt-openrpc --task specification -b src/json/firebolt-specification-base.json --sdk core --sdk discovery --sdk manage -o build/firebolt-specification.json"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rdkcentral/firebolt-schemas/issues"
+  },
+  "homepage": "https://github.com/rdkcentral/firebolt-schemas#readme",
+  "dependencies": {
+    "ajv": "^8.9.0",
+    "ajv-formats": "^2.1.1",
+    "standard": "^16.0.4"
+  },
+  "devDependencies": {
+    "@firebolt-js/openrpc": "^1.3.0-alpha.1",
+    "@firebolt-js/sdk": "../firebolt-core-sdk",
+    "@firebolt-js/manage": "../firebolt-manage-sdk",
+    "@firebolt-js/discovery": "../firebolt-discovery-sdk",
+    "nopt": "^5.0.0"
+  }
+}
