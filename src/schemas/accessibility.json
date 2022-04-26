@@ -107,6 +107,28 @@
                     "$ref": "#/definitions/ClosedCaptionsStyles"
                 }
             }
-        }
+        },
+        "VoiceSpeed": {
+            "title": "VoiceSpeed",
+            "type": "number"
+        },
+        "VoiceGuidanceSettings": {
+            "title": "VoiceGuidanceSettings",
+            "type": "object",
+            "required": [
+                "enabled",
+                "speed"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether or not voice guidance should be enabled by default"
+              },
+              "speed": {
+                "type": "number",
+                "description": "The speed at which voice guidance speech will be read back to the user"
+              }
+            }
+          }
     }
 }
