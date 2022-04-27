@@ -28,7 +28,7 @@
             "minimum": 0,
             "maximum": 100
         },
-        "HoriztonalAlignment": {
+        "HorizontalAlignment": {
             "type": "string"
         },
         "VerticalAlignment": {
@@ -40,54 +40,34 @@
             "description": "The default styles to use when displaying closed-captions",
             "properties": {
                 "fontFamily": {
-                    "type": {
-                        "$ref": "#/definitions/FontFamily"
-                    }
+                    "$ref": "#/definitions/FontFamily"
                 },
                 "fontSize": {
-                    "type": {
-                        "$ref": "#/definitions/FontSize"
-                    }
+                    "$ref": "#/definitions/FontSize"
                 },
                 "fontColor": {
-                    "type": {
-                        "$ref": "#/definitions/Color"
-                    }
+                    "$ref": "#/definitions/Color"
                 },
                 "fontEdge": {
-                    "type": {
-                        "$ref": "#/definitions/FontEdge"
-                    }
+                    "$ref": "#/definitions/FontEdge"
                 },
                 "fontEdgeColor": {
-                    "type": {
-                        "$ref": "#/definitions/Color"
-                    }
+                    "$ref": "#/definitions/Color"
                 },
                 "fontOpacity": {
-                    "type": {
-                        "$ref": "#/definitions/Opacity"
-                    }
+                    "$ref": "#/definitions/Opacity"
                 },
                 "backgroundColor": {
-                    "type": {
-                        "$ref": "#/definitions/Color"
-                    }
+                    "$ref": "#/definitions/Color"
                 },
                 "backgroundOpacity": {
-                    "type": {
-                        "$ref": "#/definitions/Opacity"
-                    }
+                    "$ref": "#/definitions/Opacity"
                 },
                 "textAlign": {
-                    "type": {
-                        "$ref": "#/definitions/HorizontalAlignment"
-                    }
+                    "$ref": "#/definitions/HorizontalAlignment"
                 },
                 "textAlignVertical": {
-                    "type": {
-                        "$ref": "#/definitions/VerticalAlignment"
-                    }
+                    "$ref": "#/definitions/VerticalAlignment"
                 }
             }
         },

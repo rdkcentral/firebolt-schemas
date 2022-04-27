@@ -122,19 +122,20 @@
             "title": "ProviderResponse",
             "type": "object",
             "required": [
-              "correlationId",
-              "response"
+                "correlationId",
+                "response"
             ],
             "additionalProperties": false,
             "properties": {
-              "correlationId": {
-                "type": "string",
-                "description": "The id that was passed in to the event that triggered a provider method to be called"
-              },
-              "response": {
-                "description": "The result of the provider response.",
-                "type": "object"
-              }
-         }          
+                "correlationId": {
+                    "type": "string",
+                    "description": "The id that was passed in to the event that triggered a provider method to be called"
+                },
+                "response": {
+                    "description": "The result of the provider response.",
+                    "type": "object"
+                }
+            }
+        }
     }
 }
