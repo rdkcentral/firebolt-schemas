@@ -149,8 +149,7 @@
                     "description": "The id that was passed in to the event that triggered a provider method to be called"
                 },
                 "result": {
-                    "description": "The result of the provider response.",
-                    "type": "object"
+                    "description": "The result of the provider response."
                 }
             }
         }
