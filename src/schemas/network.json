@@ -1,28 +1,12 @@
 {
   "$id": "https://meta.comcast.com/firebolt/network",
   "title": "Network",
-  "oneOf": [
-    {
-      "$ref": "#/definitions/NetworkType"
-    },
-    {
-      "$ref": "#/definitions/NetworkTimeout"
-    }
-  ],
   "definitions": {
     "NetworkType": {
       "title": "NetworkType",
       "description": "Type of Network connected to the device.",
       "type": "string",
       "enum": ["wifi", "ethernet", "none"]
-    },
-    "NetworkTimeout": {
-      "title": "NetworkTimeout",
-      "description": "Defines the timeout in seconds. If the threshold for timeout is passed for a network operation without a result it will throw an error.",
-      "type": "integer",
-      "default": 0,
-      "minimum": 0,
-      "maximum": 9999
     }
   }
 }
