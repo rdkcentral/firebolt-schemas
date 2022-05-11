@@ -14,7 +14,16 @@
       "title": "NetworkType",
       "description": "Type of Network connected to the device.",
       "type": "string",
-      "enum": ["wifi", "ethernet", "none"]
+      "enum": ["wifi", "ethernet", "hybrid", "none"]
+    },
+    "NetworkState": {
+      "title": "NetworkState",
+      "type": "string",
+      "enum": [
+        "connected",
+        "disconnected"
+      ],
+      "description": "Connection status to the router, as a string enumeration."
     },
     "NetworkStatus": {
         "title": "NetworkStatus",
@@ -25,7 +34,10 @@
             "type": "boolean",
             "description": "Connection status to the router."
           },
-          "interface": {
+          "state": {
+            "$ref": "#/definitions/NetworkState"
+          },
+          "type": {
             "$ref": "#/definitions/NetworkType"
           }
         }
