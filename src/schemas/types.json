@@ -152,6 +152,14 @@
                     "description": "The result of the provider response."
                 }
             }
-        }
+        },
+        "Timeout": {
+            "title": "Timeout",
+            "description": "Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.",
+            "type": "integer",
+            "default": 0,
+            "minimum": 0,
+            "maximum": 9999
+          }
     }
 }
