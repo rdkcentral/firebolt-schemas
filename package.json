@@ -26,9 +26,6 @@
   },
   "devDependencies": {
     "@firebolt-js/openrpc": "^1.3.0-alpha.1",
-    "@firebolt-js/sdk": "../firebolt-core-sdk",
-    "@firebolt-js/manage": "../firebolt-manage-sdk",
-    "@firebolt-js/discovery": "../firebolt-discovery-sdk",
     "nopt": "^5.0.0"
   }
 }
