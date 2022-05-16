@@ -28,7 +28,14 @@
           "type": "boolean",
           "description": "Whether or not the user has enabled watch history"
         }
-      }
+      },
+      "examples": [
+        {
+          "enableRecommendations": true,
+          "shareWatchHistory": false,
+          "rememberWatchedPrograms": true
+        }
+      ]
     }
   }
 }
