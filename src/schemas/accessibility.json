@@ -86,7 +86,24 @@
                 "styles": {
                     "$ref": "#/definitions/ClosedCaptionsStyles"
                 }
-            }
+            },
+            "examples": [
+                {
+                    "enabled": true,
+                    "styles": {
+                        "fontFamily": "Monospace sans-serif",
+                        "fontSize": 1,
+                        "fontColor": "#ffffff",
+                        "fontEdge": "none",
+                        "fontEdgeColor": "#7F7F7F",
+                        "fontOpacity": 100,
+                        "backgroundColor": "#000000",
+                        "backgroundOpacity": 100,
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                    }
+                }                            
+            ]
         },
         "VoiceSpeed": {
             "title": "VoiceSpeed",
@@ -108,7 +125,13 @@
                 "type": "number",
                 "description": "The speed at which voice guidance speech will be read back to the user"
               }
-            }
+            },
+            "examples": [
+                {
+                    "enabled": true,
+                    "speed": 2
+                }
+            ]
           }
     }
 }
