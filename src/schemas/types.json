@@ -60,6 +60,25 @@
                 "type": "boolean"
             }
         },
+        "BooleanMapWithAtLeastOneTrue": {
+            "title": "BooleanMapWithAtLeastOneTrue",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BooleanMap"
+                },
+                {
+                    "type": "object",
+                    "minProperties": 1,
+                    "not": {
+                      "additionalProperties": {
+                          "enum": [
+                                false
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
         "FlatMap": {
             "type": "object",
             "additionalProperties": {
