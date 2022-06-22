@@ -1,0 +1,28 @@
+{
+    "$id": "https://meta.comcast.com/firebolt/localization",
+    "title": "Localization",
+    "oneOf": [
+        {
+            "$ref": "#/definitions/Locality"
+        },
+        {
+            "$ref": "#/definitions/CountryCode"
+        },
+        {
+            "$ref": "#/definitions/Language"
+        }
+    ],
+    "definitions": {
+        "CountryCode": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+        },
+        "Language": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+        },
+        "Locality": {
+            "type": "string"
+        }
+    }
+}
