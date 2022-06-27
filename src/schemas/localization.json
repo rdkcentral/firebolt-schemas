@@ -29,7 +29,7 @@
         },
         "Locale": {
             "type": "string",
-            "pattern": "^([A-Za-z]{2})(-[A-Za-z]{2})(-[A-Za-z]+)?$"
+            "pattern": "^[a-zA-Z]+([a-zA-Z0-9\\-]*)$"
         }
     }
 }
