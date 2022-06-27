@@ -10,19 +10,26 @@
         },
         {
             "$ref": "#/definitions/Language"
+        },
+        {
+            "$ref": "#/definitions/Locale"
         }
     ],
     "definitions": {
         "CountryCode": {
             "type": "string",
-            "pattern": "^[A-Z]{2}$"
+            "pattern": "^[A-Za-z]{2}$"
         },
         "Language": {
             "type": "string",
-            "pattern": "^[A-Z]{2}$"
+            "pattern": "^[A-Za-z]{2}$"
         },
         "Locality": {
             "type": "string"
+        },
+        "Locale": {
+            "type": "string",
+            "pattern": "^([A-Za-z]{2})(-[A-Za-z]{2})(-[A-Za-z]+)?$"
         }
     }
 }
