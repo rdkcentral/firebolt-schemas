@@ -219,7 +219,11 @@
         },
         {
           "$ref": "#/definitions/SectionIntent"
+        },
+        {
+          "$ref": "#/definitions/TuneIntent"
         }
+
       ]
     },
     "DiscoveryIntent": {
@@ -250,6 +254,9 @@
         },
         {
           "$ref": "#/definitions/InputIntent"
+        },
+        {
+          "$ref": "#/definitions/TuneIntent"
         }
       ]
     },
@@ -400,6 +407,36 @@
           }
         }
       ]
+    },
+    "ChannelEntity": {
+      "title": "ChannelEntity",
+      "type": "object",
+      "properties": {
+        "entityType": {
+          "const": "channel"
+        },
+        "channelType": {
+          "type": "string",
+          "enum": [
+            "streaming",
+            "overTheAir"
+          ]
+        },
+        "entityId": {
+          "type": "string",
+          "description": "ID of the channel, in the target App's scope."
+        },
+        "appContentData": {
+          "type": "string",
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "entityType",
+        "channelType",
+        "entityId"
+      ],
+      "additionalProperties": false
     },
     "ProgramEntity": {
       "title": "ProgramEntity",
@@ -689,6 +726,82 @@
       "examples": [
         {
           "entityId": "an-entity"
+        }
+      ]
+    },
+    "TuneIntent": {
+      "description": "A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.",
+      "title": "TuneIntent",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Intent"
+        },
+        {
+          "$ref": "#/definitions/IntentProperties"
+        },
+        {
+          "type": "object",
+          "required": [
+            "data"
+          ],
+          "properties": {
+            "action": {
+              "const": "tune"
+            },
+            "data": {
+              "type": "object",
+              "required": [
+                "entity"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "entity": {
+                  "$ref": "#/definitions/ChannelEntity"
+                },
+                "options": {
+                  "description": "The options property of the data property MUST have only one of the following fields.",
+                  "type": "object",
+                  "required": [],
+                  "additionalProperties": false,
+                  "minProperties": 1,
+                  "maxProperties": 1,
+                  "properties": {
+                    "assetId": {
+                      "type": "string",
+                      "description": "The ID of a specific 'listing', as scoped by the target App's ID-space, which the App should begin playback from."
+                    },
+                    "restartCurrentProgram": {
+                      "type": "boolean",
+                      "description": "Denotes that the App should start playback at the most recent program boundary, rather than 'live.'"
+                    },
+                    "time": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "ISO 8601 Date/Time where the App should begin playback from."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "examples": [
+        {
+          "action": "tune",
+          "data": {
+            "entity": {
+              "entityType": "channel",
+              "channelType": "streaming",
+              "entityId": "an-ott-channel"
+            },
+            "options": {
+              "restartCurrentProgram": true
+            }
+          },
+          "context": {
+            "source": "voice"
+          }
         }
       ]
     },
