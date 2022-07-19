@@ -1,0 +1,37 @@
+{
+  "$id": "https://meta.comcast.com/firebolt/lifecycle",
+  "title": "Lifecycle",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/State"
+    },
+    {
+      "$ref": "#/definitions/CloseReason"
+    }
+  ],
+  "definitions": {
+    "State": {
+      "title": "State",
+      "description": "The application lifecycle state",
+      "type": "string",
+      "enum": [
+          "initializing",
+          "inactive",
+          "foreground",
+          "background",
+          "unloading",
+          "suspended"
+      ]
+    },
+    "CloseReason": {
+      "title": "CloseReason",
+      "description": "The application close reason",
+      "type": "string",      
+      "enum": [
+          "remoteButton",
+          "userExit",
+          "error"
+      ]
+    }
+  }
+}
