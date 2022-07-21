@@ -29,7 +29,7 @@
         },
         "DenyReason": {
             "title": "DenyReason",
-            "description": "Reasons why a Capability might not be invokabl",
+            "description": "Reasons why a Capability might not be invokable",
             "type": "string",
             "enum": [
                 "unpermitted",
