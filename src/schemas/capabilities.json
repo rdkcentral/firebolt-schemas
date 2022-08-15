@@ -27,6 +27,19 @@
             "type": "string",
             "enum": ["use", "manage", "provide"]
         },
+        "Permission": {
+            "title": "Permission",
+            "description": "A Capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
+            "type": "object",
+            "properties": {
+                "role": {
+                    "$ref": "#/definitions/Role"
+                },
+                "capability": {
+                    "$ref": "#/definitions/Capability"
+                }
+            }
+        },
         "DenyReason": {
             "title": "DenyReason",
             "description": "Reasons why a Capability might not be invokable",
