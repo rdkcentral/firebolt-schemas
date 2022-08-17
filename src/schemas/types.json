@@ -179,7 +179,7 @@
             "type": "object",
             "properties": {
                 "path": {
-                    "description": "A relative path within the app bundle.",
+                    "description": "Path to the image.",
                     "type": "string"
                 },
                 "aspectRatio": {
