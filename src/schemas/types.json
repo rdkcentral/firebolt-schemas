@@ -202,7 +202,7 @@
                 }
             },
             "required": [
-                "path", "aspectRatio", "type"
+                "uri", "aspectRatio", "type"
             ]
         }
     }
