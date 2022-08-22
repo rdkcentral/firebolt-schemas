@@ -178,8 +178,8 @@
         "Image": {
             "type": "object",
             "properties": {
-                "path": {
-                    "description": "Path to the image.",
+                "uri": {
+                    "description": "URI for the image. May be a relative path (e.g. ./foo/image.png) or absolute (e.g. https://foo.com/bar.png) depending on usage.",
                     "type": "string"
                 },
                 "aspectRatio": {
