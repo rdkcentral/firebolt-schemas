@@ -53,23 +53,29 @@
                 "ungranted"
             ]
         },
+        "CapPermissionStatus": {
+            "type": "object",
+            "properties": {
+                "permitted": {
+                    "type": "boolean",
+                    "description": "Provides info whether the capability is permitted"
+                },
+                "granted": {
+                    "type": "boolean",
+                    "description": "Provides info whether the capability is granted"
+                }
+            }
+        },
         "CapabilityInfo": {
             "type": "object",
             "required": [
-                "capability",
-                "role",
                 "supported",
                 "available",
-                "permitted",
-                "granted"
+                "use",
+                "manage",
+                "provide"
             ],
             "properties": {
-                "capability": {
-                    "$ref": "#/definitions/Capability"
-                },
-                "role": {
-                    "$ref": "#/definitions/Role"
-                },
                 "supported": {
                     "type": "boolean",
                     "description": "Provides info whether the capability is supported"
@@ -78,13 +84,14 @@
                     "type": "boolean",
                     "description": "Provides info whether the capability is available"
                 },
-                "permitted": {
-                    "type": "boolean",
-                    "description": "Provides info whether the capability is permitted"
+                "use": {
+                    "$ref": "#/definitions/CapPermissionStatus"
                 },
-                "granted": {
-                    "type": "boolean",
-                    "description": "Provides info whether the capability is granted"
+                "manage": {
+                    "$ref": "#/definitions/CapPermissionStatus"
+                },
+                "provide": {
+                    "$ref": "#/definitions/CapPermissionStatus"
                 },
                 "details": {
                     "type": "array",
