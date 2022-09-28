@@ -76,6 +76,9 @@
                 "provide"
             ],
             "properties": {
+                "capability": {
+                    "$ref": "#/definitions/Capability"
+                },
                 "supported": {
                     "type": "boolean",
                     "description": "Provides info whether the capability is supported"
