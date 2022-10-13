@@ -163,8 +163,7 @@
       "description": "A Firebolt compliant representation of a user intention.",
       "type": "object",
       "required": [
-        "action",
-        "context"
+        "action"
       ],
       "properties": {
         "action": {
