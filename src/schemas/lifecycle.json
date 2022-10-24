@@ -30,6 +30,7 @@
       "enum": [
           "remoteButton",
           "userExit",
+          "done",
           "error"
       ]
     }
