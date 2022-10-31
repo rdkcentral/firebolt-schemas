@@ -16,6 +16,142 @@
         }
     ],
     "definitions": {
+        "GrantPolicy": {
+            "type": "object",
+            "required": [
+                "options",
+                "scope",
+                "lifespan",
+                "privacySetting",
+                "overridable"
+            ],
+            "if": {
+                "properties": {
+                    "lifespan": {
+                        "const": "seconds"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "lifespanTtl"
+                ]
+            },
+            "properties": {
+                "options": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/GrantRequirements"
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "enum": [
+                        "app",
+                        "device"
+                    ]
+                },
+                "lifespan": {
+                    "type": "string",
+                    "enum": [
+                        "once",
+                        "forever",
+                        "appActive",
+                        "powerActive",
+                        "seconds"
+                    ]
+                },
+                "lifespanTtl": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "privacySetting": {
+                    "$ref": "#/definitions/PrivacySetting"
+                },
+                "overridable": {
+                    "type": "boolean"
+                },
+                "additionalProperties": false
+            }
+        },
+        "PrivacySetting": {
+            "type": "object",
+            "required": [
+                "property",
+                "allowValue",
+                "autoGrantIfAllowed",
+                "revokeGrantsOnDeny",
+                "updateProperty"
+            ],
+            "properties": {
+                "property": {
+                    "type": "string",
+                    "description": "The Firebolt <Module>.<getter> RPC method name for a property",
+                    "pattern": "^[a-zA-Z]+\\.[a-zA-Z]+$"
+                },
+                "allowValue": {
+                    "type": "boolean",
+                    "description": "The value for the property to be in the most permissive state, i.e. granted."
+                },
+                "autoGrantIfAllowed": {
+                    "type": "boolean",
+                    "description": "Whether to skip all GrantRequirement steps if the property is set to the 'allow value'."
+                },
+                "revokeGrantsOnDeny": {
+                    "type": "boolean",
+                    "description": "Whether grants made from this policy will be revoked if/when the property is ever set to the deny value."
+                },
+                "updateProperty": {
+                    "type": "boolean",
+                    "description": "Whether to update the property value to match the grant."
+                }
+            },
+            "additionalProperties": false
+        },
+        "GrantRequirements": {
+            "type": "object",
+            "required": [
+                "steps"
+            ],
+            "properties": {
+                "steps": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/GrantStep"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "GrantStep": {
+            "type": "object",
+            "required": [
+                "capability"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "capability": {
+                    "$ref": "#/definitions/GrantKey"
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "GrantKey": {
+            "allOf": [
+                {
+                    "$ref": "https://meta.comcast.com/firebolt/capabilities#/definitions/Capability"
+                },
+                {
+                    "type": "string",
+                    "pattern": ":usergrant:[a-z0-9]+?$"
+                }
+            ]
+        },
         "Capability": {
             "type": "string",
             "description": "A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.",
