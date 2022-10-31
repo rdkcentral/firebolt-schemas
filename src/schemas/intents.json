@@ -180,6 +180,7 @@
               "type": "string",
               "enum": [
                 "voice",
+                "channel-lineup",
                 "editorial",
                 "device"
               ]
