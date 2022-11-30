@@ -179,6 +179,10 @@
             "title": "Permission",
             "description": "A Capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
             "type": "object",
+            "required": [
+                "role",
+                "capability"
+            ],
             "properties": {
                 "role": {
                     "$ref": "#/definitions/Role"
@@ -186,7 +190,8 @@
                 "capability": {
                     "$ref": "#/definitions/Capability"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "DenyReason": {
             "title": "DenyReason",
