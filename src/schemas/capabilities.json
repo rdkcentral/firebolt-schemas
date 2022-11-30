@@ -49,7 +49,7 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                        "$ref": "#/definitions/GrantTrigger"
+                        "$ref": "#/definitions/Permission"
                     }
                 },
                 "scope": {
@@ -129,22 +129,6 @@
                     "items": {
                         "$ref": "#/definitions/GrantStep"
                     }
-                }
-            },
-            "additionalProperties": false
-        },
-        "GrantTrigger": {
-            "type": "object",
-            "required": [],
-            "properties": {
-                "use": {
-                    "$ref": "#/definitions/Capability"
-                },
-                "manage": {
-                    "$ref": "#/definitions/Capability"
-                },
-                "provide": {
-                    "$ref": "#/definitions/Capability"
                 }
             },
             "additionalProperties": false
