@@ -45,6 +45,13 @@
                         "$ref": "#/definitions/GrantRequirements"
                     }
                 },
+                "triggers": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/Permission"
+                    }
+                },
                 "scope": {
                     "type": "string",
                     "enum": [
@@ -79,9 +86,8 @@
             "type": "object",
             "required": [
                 "property",
-                "allowValue",
-                "autoGrantIfAllowed",
-                "revokeGrantsOnDeny",
+                "autoApplyPolicy",
+                "revokeGrantsOnDisallow",
                 "updateProperty"
             ],
             "properties": {
@@ -90,15 +96,17 @@
                     "description": "The Firebolt <Module>.<getter> RPC method name for a property",
                     "pattern": "^[a-zA-Z]+\\.[a-zA-Z]+$"
                 },
-                "allowValue": {
-                    "type": "boolean",
-                    "description": "The value for the property to be in the most permissive state, i.e. granted."
+                "autoApplyPolicy": {
+                    "type": "string",
+                    "enum": [
+                        "always",
+                        "allowed",
+                        "disallowed",
+                        "never"
+                    ],
+                    "description": "Policy which describes how to to silently apply the grant. 'always' - Silently grant if value matches allow-value and silently deny if value does not match allow value. 'allowed' - Silently grant if value matches allow-value. 'disallowed' - Silently deny if value does not match allow-value. 'never' - Do not silently grant for any case"
                 },
-                "autoGrantIfAllowed": {
-                    "type": "boolean",
-                    "description": "Whether to skip all GrantRequirement steps if the property is set to the 'allow value'."
-                },
-                "revokeGrantsOnDeny": {
+                "revokeGrantsOnDisallow": {
                     "type": "boolean",
                     "description": "Whether grants made from this policy will be revoked if/when the property is ever set to the deny value."
                 },
@@ -161,12 +169,20 @@
             "title": "Role",
             "description": "Role provides access level for the app for a given capability.",
             "type": "string",
-            "enum": ["use", "manage", "provide"]
+            "enum": [
+                "use",
+                "manage",
+                "provide"
+            ]
         },
         "Permission": {
             "title": "Permission",
             "description": "A Capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
             "type": "object",
+            "required": [
+                "role",
+                "capability"
+            ],
             "properties": {
                 "role": {
                     "$ref": "#/definitions/Role"
@@ -174,7 +190,8 @@
                 "capability": {
                     "$ref": "#/definitions/Capability"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "DenyReason": {
             "title": "DenyReason",
