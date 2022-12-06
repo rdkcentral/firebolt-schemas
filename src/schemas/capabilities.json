@@ -45,13 +45,6 @@
                         "$ref": "#/definitions/GrantRequirements"
                     }
                 },
-                "triggers": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                        "$ref": "#/definitions/Permission"
-                    }
-                },
                 "scope": {
                     "type": "string",
                     "enum": [
@@ -179,10 +172,6 @@
             "title": "Permission",
             "description": "A Capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
             "type": "object",
-            "required": [
-                "role",
-                "capability"
-            ],
             "properties": {
                 "role": {
                     "$ref": "#/definitions/Role"
@@ -190,8 +179,7 @@
                 "capability": {
                     "$ref": "#/definitions/Capability"
                 }
-            },
-            "additionalProperties": false
+            }
         },
         "DenyReason": {
             "title": "DenyReason",
