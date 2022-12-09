@@ -71,9 +71,9 @@
                 },
                 "overridable": {
                     "type": "boolean"
-                },
-                "additionalProperties": false
-            }
+                }
+            },
+            "additionalProperties": false
         },
         "PrivacySetting": {
             "type": "object",
