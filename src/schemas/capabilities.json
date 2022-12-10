@@ -22,7 +22,6 @@
                 "options",
                 "scope",
                 "lifespan",
-                "privacySetting",
                 "overridable"
             ],
             "if": {
@@ -40,7 +39,6 @@
             "properties": {
                 "options": {
                     "type": "array",
-                    "minItems": 1,
                     "items": {
                         "$ref": "#/definitions/GrantRequirements"
                     }
@@ -71,17 +69,42 @@
                 },
                 "overridable": {
                     "type": "boolean"
+                }
+            },
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "options": [
+                        {
+                            "steps": [
+                                {
+                                    "capability": "xrn:firebolt:capability:usergrant:acknowledge"
+                                }
+                            ]
+                        }
+                    ],
+                    "scope": "app",
+                    "lifespan": "seconds",
+                    "lifespanTtl": 86400,
+                    "overridable": true
                 },
-                "additionalProperties": false
-            }
+                {
+                    "options": [],
+                    "scope": "device",
+                    "lifespan": "once",
+                    "overridable": true,
+                    "privacySetting": {
+                        "property": "Privacy.allowACR",
+                        "autoApplyPolicy": "always"
+                    }
+                }
+            ]
         },
         "PrivacySetting": {
             "type": "object",
             "required": [
                 "property",
-                "autoApplyPolicy",
-                "revokeGrantsOnDisallow",
-                "updateProperty"
+                "autoApplyPolicy"
             ],
             "properties": {
                 "property": {
@@ -98,10 +121,6 @@
                         "never"
                     ],
                     "description": "Policy which describes how to to silently apply the grant. 'always' - Silently grant if value matches allow-value and silently deny if value does not match allow value. 'allowed' - Silently grant if value matches allow-value. 'disallowed' - Silently deny if value does not match allow-value. 'never' - Do not silently grant for any case"
-                },
-                "revokeGrantsOnDisallow": {
-                    "type": "boolean",
-                    "description": "Whether grants made from this policy will be revoked if/when the property is ever set to the deny value."
                 },
                 "updateProperty": {
                     "type": "boolean",
@@ -179,7 +198,8 @@
                 "capability": {
                     "$ref": "#/definitions/Capability"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "DenyReason": {
             "title": "DenyReason",
@@ -205,7 +225,8 @@
                     "type": "boolean",
                     "description": "Provides info whether the capability is granted"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "CapabilityInfo": {
             "type": "object",
@@ -246,7 +267,26 @@
                     "maxItems": 6
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "capability": "xrn:firebolt:capability:keyboard",
+                    "supported": true,
+                    "available": true,
+                    "use": {
+                        "permitted": true,
+                        "granted": true
+                    },
+                    "manage": {
+                        "permitted": true,
+                        "granted": true
+                    },
+                    "provide": {
+                        "permitted": true,
+                        "granted": true
+                    }
+                }
+            ]
         }
     }
 }
