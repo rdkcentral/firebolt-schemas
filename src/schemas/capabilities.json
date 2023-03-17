@@ -189,7 +189,7 @@
         },
         "Permission": {
             "title": "Permission",
-            "description": "A Capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
+            "description": "A sapability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).",
             "type": "object",
             "properties": {
                 "role": {

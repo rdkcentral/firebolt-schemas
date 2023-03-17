@@ -43,6 +43,7 @@
             ]
         },
         "BooleanMap": {
+            "title": "BooleanMap",
             "type": "object",
             "additionalProperties": {
                 "type": "boolean"
