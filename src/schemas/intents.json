@@ -92,7 +92,7 @@
           ],
           "properties": {
             "intent": {
-              "oneOf": [
+              "anyOf": [
                 {
                   "$ref": "#/definitions/DiscoveryIntent"
                 },
