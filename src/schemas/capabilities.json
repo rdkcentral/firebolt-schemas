@@ -175,7 +175,7 @@
         "Capability": {
             "type": "string",
             "description": "A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.",
-            "pattern": "xrn:firebolt:capability:([a-z0-9]+)((:[a-z0-9]+)?)"
+            "pattern": "^xrn:firebolt:capability:([a-z0-9\\-]+)((:[a-z0-9\\-]+)?)$"
         },
         "Role": {
             "title": "Role",
