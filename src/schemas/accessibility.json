@@ -1,6 +1,6 @@
 {
     "$id": "https://meta.comcast.com/firebolt/accessibility",
-    "title": "Accessibilty",
+    "title": "Accessibility",
     "anyOf": [
         {
             "$ref": "#/definitions/ClosedCaptionsStyles"
