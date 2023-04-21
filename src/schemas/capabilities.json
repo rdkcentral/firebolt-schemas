@@ -173,6 +173,7 @@
             ]
         },
         "Capability": {
+            "title": "Capability",
             "type": "string",
             "description": "A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.",
             "pattern": "^xrn:firebolt:capability:([a-z0-9\\-]+)((:[a-z0-9\\-]+)?)$"
@@ -229,6 +230,7 @@
             "additionalProperties": false
         },
         "CapabilityInfo": {
+            "title": "CapabilityInfo",
             "type": "object",
             "required": [
                 "supported",
