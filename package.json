@@ -1,6 +1,6 @@
 {
   "name": "@firebolt-js/schemas",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Firebolt schemas for configuration and global types",
   "files": [
     "src/schemas/**/*"
