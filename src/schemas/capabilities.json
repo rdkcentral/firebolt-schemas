@@ -69,6 +69,26 @@
                 },
                 "overridable": {
                     "type": "boolean"
+                },
+                "evaluateAt": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "invocation",
+                            "activeSession",
+                            "loadedSession"
+                        ],
+                        "description": "Describes when this grant policy should be evaluated. 'invocation' causes this policy to be evaluated when a firebolt method is invoked and that method requires the capability this policy is for. 'activeSession' is when an application's firebolt state transitions to an active state (foreground/background) from an inactive state and this application is permitted to this capability. 'loadedSession' is when an application's firebolt state transitions from unloaded state into initializing state and this application is permitted to this capability. This field on the policy is an array, which means this policy could be evaluated at multiple places. For instance the policy could be evaluated at both invocation time and activeSession time. The default value for this field is ['invocation'], meaning the policy is only evaluated when a method is invoked."
+                    }
+                },
+                "persistence": {
+                    "type": "string",
+                    "enum": [
+                        "account",
+                        "device"
+                    ],
+                    "description": "Tells Firebolt how to persist the grant state for this policy. If this is set to account, then any device that shares the same account id will have their user grant synced. If a user makes a grant decision on one device, that grant decision will be used by another device on the same account. The time of expiration for the grant is shared across devices as well. Only lifespan of 'forever' and 'seconds' are supported for account persistence. The means of syncing the user grants across devices is left up to the Firebolt implementation. The default value for persistence is 'device', this just means the grants are stored locally on the current device and are not shared to any other devices."
                 }
             },
             "additionalProperties": false,
@@ -97,6 +117,26 @@
                         "property": "Privacy.allowACR",
                         "autoApplyPolicy": "always"
                     }
+                },
+                {
+                    "options": [
+                        {
+                            "steps": [
+                                {
+                                    "capability": "xrn:firebolt:capability:usergrant:acknowledge"
+                                }
+                            ]
+                        }
+                    ],
+                    "scope": "app",
+                    "lifespan": "seconds",
+                    "lifespanTtl": 86400,
+                    "overridable": true,
+                    "evaluateAt": [
+                        "invocation",
+                        "activeSession"
+                    ],
+                    "persistence": "account"
                 }
             ]
         },
