@@ -72,14 +72,14 @@
                 },
                 "evaluateAt": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string",
                         "enum": [
                             "invocation",
-                            "activeSession",
-                            "loadedSession"
+                            "activeSession"
                         ],
-                        "description": "Describes when this grant policy should be evaluated. 'invocation' causes this policy to be evaluated when a firebolt method is invoked and that method requires the capability this policy is for. 'activeSession' is when an application's firebolt state transitions to an active state (foreground/background) from an inactive state and this application is permitted to this capability. 'loadedSession' is when an application's firebolt state transitions from unloaded state into initializing state and this application is permitted to this capability. This field on the policy is an array, which means this policy could be evaluated at multiple places. For instance the policy could be evaluated at both invocation time and activeSession time. The default value for this field is ['invocation'], meaning the policy is only evaluated when a method is invoked."
+                        "description": "Describes when this grant policy should be evaluated. 'invocation' causes this policy to be evaluated when a firebolt method is invoked and that method requires the capability this policy is for. 'activeSession' is when an application's firebolt state transitions to an active state (foreground/background) from an inactive state and this application is permitted to this capability. This field on the policy is an array, which means this policy could be evaluated at multiple places. For instance the policy could be evaluated at both invocation time and activeSession time. The default value for this field is ['invocation'], meaning the policy is only evaluated when a method is invoked."
                     }
                 },
                 "persistence": {
