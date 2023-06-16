@@ -263,8 +263,15 @@
                     "description": "Provides info whether the capability is permitted"
                 },
                 "granted": {
-                    "type": "boolean",
-                    "description": "Provides info whether the capability is granted"
+                    "oneOf": [
+                        {
+                            "type": "boolean",
+                            "description": "Provides info whether the capability is granted"
+                        },
+                        {
+                            "const": null
+                        }
+                    ]
                 }
             },
             "additionalProperties": false
