@@ -102,12 +102,14 @@
                         "textAlign": "center",
                         "textAlignVertical": "middle"
                     }
-                }                            
+                }
             ]
         },
         "VoiceSpeed": {
             "title": "VoiceSpeed",
-            "type": "number"
+            "type": "number",
+            "minimum": 0.5,
+            "maximum": 2
         },
         "VoiceGuidanceSettings": {
             "title": "VoiceGuidanceSettings",
@@ -117,14 +119,14 @@
                 "speed"
             ],
             "properties": {
-              "enabled": {
-                "type": "boolean",
-                "description": "Whether or not voice guidance should be enabled by default"
-              },
-              "speed": {
-                "type": "number",
-                "description": "The speed at which voice guidance speech will be read back to the user"
-              }
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether or not voice guidance should be enabled by default"
+                },
+                "speed": {
+                    "$ref": "https://meta.comcast.com/firebolt/accessibility#/definitions/VoiceSpeed",
+                    "description": "The speed at which voice guidance speech will be read back to the user"
+                }
             },
             "examples": [
                 {
@@ -132,6 +134,6 @@
                     "speed": 2
                 }
             ]
-          }
+        }
     }
 }
