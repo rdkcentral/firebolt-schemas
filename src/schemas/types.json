@@ -35,10 +35,8 @@
             "type": "string",
             "enum": [
                 "stereo",
-                "dolbyDigital5.1",
-                "dolbyDigital7.1",
-                "dolbyDigital5.1+",
-                "dolbyDigital7.1+",
+                "dolbyDigital",
+                "dolbyDigitalPlus",
                 "dolbyAtmos"
             ]
         },
@@ -48,6 +46,25 @@
             "additionalProperties": {
                 "type": "boolean"
             }
+        },
+        "BooleanMapWithAtLeastOneTrue": {
+            "title": "BooleanMapWithAtLeastOneTrue",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BooleanMap"
+                },
+                {
+                    "type": "object",
+                    "minProperties": 1,
+                    "not": {
+                      "additionalProperties": {
+                          "enum": [
+                                false
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         "FlatMap": {
             "type": "object",
